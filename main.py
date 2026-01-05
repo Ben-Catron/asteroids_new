@@ -1,11 +1,13 @@
 import pygame
 from constants import *
 from logger import log_state
+from player import Player
 
 def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     Clock = pygame.time.Clock()
+    Character = Player(SCREEN_WIDTH / 2 , SCREEN_HEIGHT / 2)
     dt = 0
     
     while True:
@@ -14,7 +16,9 @@ def main():
             if event.type == pygame.QUIT:
                 return
         screen.fill("black")
+        Character.draw(screen)
         pygame.display.flip()
+        
 
         dt = Clock.tick(60) / 1000
         
